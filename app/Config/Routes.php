@@ -37,6 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'ServiceOrderController::index');
 $routes->match(['get', 'post'],'create', 'ServiceOrderController::createOrder');
+$routes->get('order/delete/(:num)', 'ServiceOrderController::deleteOrder/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

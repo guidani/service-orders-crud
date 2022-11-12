@@ -9,12 +9,13 @@
   <meta name="author" content="github.com/guidani">
   <title>Service Orders CRUD</title>
   <!-- Bootstrap -->
+  <link rel="stylesheet" href="./styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
   <header class="container">
-    <h1><?= esc($title) ?></h1>
+    <h1><?=  isset($title) ? esc($title) : '' ?></h1>
   </header>
   <?= $this->renderSection('content') ?>
 

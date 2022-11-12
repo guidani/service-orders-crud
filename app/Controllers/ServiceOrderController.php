@@ -18,7 +18,8 @@ class ServiceOrderController extends BaseController
     public function index()
     {
         $data = [
-            'orders' => $this->serviceOrderModel->findAll(),
+            'orders' => $this->serviceOrderModel->paginate(20),
+            'pager' => $this->serviceOrderModel->pager,
             'title' => 'Ordens de serviço',
         ];
         return view('Home', $data);
@@ -30,8 +31,7 @@ class ServiceOrderController extends BaseController
         if ($this->request->getMethod() === 'post') {
             $this->serviceOrderModel->save($this->request->getPost());
             return view('messages', [
-                'title' => 'Nova ordem de serviço',
-                'message' => 'ordem salva com sucesso',
+                'message' => 'Ordem salva com sucesso',
             ]);
         }
 
@@ -44,17 +44,11 @@ class ServiceOrderController extends BaseController
     public function deleteOrder($id)
     {
         if ($this->serviceOrderModel->delete($id)) {
-            return true;
+            return view('messages', [
+                'message' => 'Ordem excluída com sucesso!'
+            ]);
         } else {
             echo 'Erro';
         }
     }
-
-    public function saveOrder()
-    {
-        return view('messages', [
-            'message' => 'salvo',
-        ]);
-    }
-
 }
