@@ -14,7 +14,7 @@ class ServiceOrderController extends BaseController
     {
         $this->serviceOrderModel = new ServiceOrderModel();
     }
-    
+
     public function index()
     {
         $data = [
@@ -26,20 +26,35 @@ class ServiceOrderController extends BaseController
 
     public function createOrder()
     {
+
+        if ($this->request->getMethod() === 'post') {
+            $this->serviceOrderModel->save($this->request->getPost());
+            return view('messages', [
+                'title' => 'Nova ordem de serviço',
+                'message' => 'ordem salva com sucesso',
+            ]);
+        }
+
         $data = [
-            'title' => 'Nova ordem de serviço'
+            'title' => 'Nova ordem de serviço',
         ];
         return view('CreateOrder', $data);
     }
 
     public function deleteOrder($id)
     {
-        if($this->serviceOrderModel->delete($id)){
+        if ($this->serviceOrderModel->delete($id)) {
             return true;
         } else {
             echo 'Erro';
         }
     }
 
-    
+    public function saveOrder()
+    {
+        return view('messages', [
+            'message' => 'salvo',
+        ]);
+    }
+
 }

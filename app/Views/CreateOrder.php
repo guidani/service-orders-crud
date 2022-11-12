@@ -4,7 +4,7 @@
 <?= $this->section('content') ?>
 <main class="container">
   <div class="mt-4">
-    <?php echo form_open('order/store') ?>
+    <?php echo form_open('/create') ?>
     <?= csrf_field() ?>
 
     <div class="form-group mb-3">

@@ -3,7 +3,7 @@
 <?=$this->section('content')?>
     <main class="container">
 
-    <?php echo anchor(base_url('create/order'), 'Nova ordem', ['class' => 'btn btn-success']) ?>
+    <?php echo anchor(base_url('create'), 'Nova ordem', ['class' => 'btn btn-success']) ?>
     <br>
 
       <?php if (sizeof($orders) > 0) {
