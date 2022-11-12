@@ -13,7 +13,9 @@
 </head>
 
 <body>
-
+  <header class="container">
+    <h1><?= esc($title) ?></h1>
+  </header>
   <?= $this->renderSection('content') ?>
 
 </body>
