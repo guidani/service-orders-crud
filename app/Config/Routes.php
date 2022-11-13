@@ -39,6 +39,7 @@ $routes->get('/', 'ServiceOrderController::index');
 $routes->match(['get', 'post'],'create', 'ServiceOrderController::createOrder');
 $routes->get('order/delete/(:num)', 'ServiceOrderController::deleteOrder/$1');
 $routes->get('order/edit/(:num)', 'ServiceOrderController::editOrder/$1');
+// $routes->get('search/(:num)', 'ServiceOrderController::editOrder/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -10,8 +10,24 @@
 </script>
     <main class="container">
 
-    <?php echo anchor(base_url('create'), 'Nova ordem', ['class' => 'btn btn-success']) ?>
-    <br>
+    <div class="row">
+      <div class="col">
+        <?php echo anchor(base_url('create'), 'Nova ordem', ['class' => 'btn btn-success']) ?>
+      </div>
+      <div class="col-4">
+        <form class="form">
+          <div class="row">
+            <div class="col p-0">
+              <input type="text" class="form-control" placeholder="Pesquisar ordens" name="q">
+            </div>
+            <div class="col-1 p-0">
+              <button class="btn btn-primary" ><i class="bi-search"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
 
     <?php if (!empty($orders) && is_array($orders)): ?>
 

@@ -22,6 +22,7 @@ class ServiceOrderController extends BaseController
             'pager' => $this->serviceOrderModel->pager,
             'title' => 'Ordens de serviço',
         ];
+        
         return view('Home', $data);
     }
 
