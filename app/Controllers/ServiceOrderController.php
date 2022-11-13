@@ -76,7 +76,7 @@ class ServiceOrderController extends BaseController
         if ($this->request->getGet('q')) {
             $q = $this->request->getGet('q');
             $res = $this->db->table('orders')->like('cliente_nome', $q)->get()->getResult();
-            $data['result'] = $res;
+            $data['result'] = (array) $res;
         }
 
         return view('searchpage', $data);

@@ -3,6 +3,7 @@
 <?=$this->section('content')?>
 
 <main class="container">
+<?php echo anchor(base_url('/'), 'Voltar', ['class' => 'btn btn-danger']) ?>
 <?php if (!empty($result) && is_array($result)): ?>
 
 <table class="table">
