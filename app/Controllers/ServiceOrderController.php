@@ -51,4 +51,13 @@ class ServiceOrderController extends BaseController
             echo 'Erro';
         }
     }
+
+    public function editOrder($id)
+    {
+        $data = [
+            'order' => $this->serviceOrderModel->find($id),
+        ];
+
+        return view('createOrder', $data);
+    }
 }
