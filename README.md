@@ -1,63 +1,67 @@
-# CodeIgniter 4 Application Starter
+# CRUD - Sistema de ordens de serviço
 
-## What is CodeIgniter?
+Projeto feito feito em PHP com o framework Codeigniter 4 e MySQL.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+# Como rodar o projeto
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- Instalar o PHP 8
+  > [link](https://windows.php.net/download#php-8.1)
+- Instalar o composer
+  > [link](https://getcomposer.org/download/)
+- Instalar o MySQL
+  > [link](https://dev.mysql.com/downloads/installer/)
+- Criar o banco de dados e a tabela no MySQL:
+  - comando para criar o banco de dados:
+    > CREATE DATABASE service_orders;
+  - comando para criar a tabela:
+  <pre>
+    create table orders(
+      id	INT NOT NULL AUTO_INCREMENT,
+      data_abertura DATE NOT NULL,
+      cliente_nome VARCHAR(255) NOT NULL,
+      cliente_endereco VARCHAR(255) NOT NULL,
+      cliente_telefone VARCHAR(255),
+      cliente_email VARCHAR(255),
+      desc_servico LONGTEXT NOT NULL,
+      valor_servico FLOAT NOT NULL,
+      created_at DATE NOT NULL,
+      updated_at DATE NOT NULL,
+      deleted_at DATE NOT NULL,
+      PRIMARY KEY (id));
+</pre>
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+- Para criar e conectar ao banco de dados você pode usar o SGBD da sua escolha, como o mysql workbench ou o dbeaver.
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+- Clonar ou baixar o zip do projeto:
+  - Para clonar é necessário ter o GIT instalado
+  > [link](https://git-scm.com/download/win)
+  - No terminal executar o comando:
+  > git clone https://github.com/guidani/service-orders-crud.git
+- Criar um arquivo .env na raiz do projeto e adicionar as seguintes linhas:
+  > CI_ENVIRONMENT = development
+  <pre>
+  database.default.hostname = localhost
+  database.default.database = service_orders
+  database.default.username = root
+  database.default.password = 
+  database.default.DBDriver = MySQLi
+  database.default.DBPrefix =
+  database.default.port = 3306
+  </pre>
+  - **database**: nome do banco de dados do projeto;
+  - **username**: nome do usuário do mysql, root é o padrão, mas altere para o seu nome de usuario caso você tenha alterado o mesmo na instalação do mysql;
+  - **password**: senha do usuário do mysql, o padrão é vazio, mas altere para a sua senha caso você tenha alterado a mesma na instalação do mysql;
+- Abra a pasta do projeto no terminal e execute o comando a seguir e aguarde a instalação da dependencias:
+  > composer install
+- Após a instalação execute o comando a seguir no terminal para executar o projeto:
+  > php spark serve
+- O projeto deve iniciar no endereço *http://localhost:8080*
 
-## Installation & updates
+## Considerações sobre o projeto
+No momento a funcionalidade de pesquisa apenas realiza a busca pelo nome do cliente e há um bug na funcionalidade, onde ao clicar no botão de pesquisar o usuário é redirecionado para o link *http://localhost:8080/index.php/search* o que resulta em uma página vazia. Mas se o termo index.php/ for apagado e for adicionado o termo de pesquisa, a pesquisa é feita normalmente como no exemplo:
+  > *http://localhost:8080/search?q=termo*
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+</br>
+</br>
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
-
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+*"Faça o teu melhor, na condição que você tem, enquanto você não tem condições melhores, para fazer melhor ainda!" - Mario Sergio Cortella*
